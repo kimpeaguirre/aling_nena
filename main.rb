@@ -1,6 +1,15 @@
 require 'sinatra'
 require './boot.rb'
 
+get '/' do
+	erb :home
+end
+
+get '/about' do
+	erb :about
+end
+
+
 # ROUTES FOR ADMIN SECTION
 get '/admin' do
   @products = Item.all
@@ -42,4 +51,6 @@ get '/delete_product/:id' do
   @product.destroy!
   redirect to '/admin'
 end
+
+
 # ROUTES FOR ADMIN SECTION
