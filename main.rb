@@ -9,6 +9,14 @@ get '/about' do
 	erb :about
 end
 
+get '/products' do
+	erb :products
+end
+
+get '/purchase' do
+	erb :purchase
+end
+
 
 # ROUTES FOR ADMIN SECTION
 get '/admin' do
