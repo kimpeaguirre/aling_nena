@@ -8,11 +8,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> Purchase </title>
+    <title>All Products : Aling Nena </title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-
     <link href="/css/admin.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -23,25 +22,48 @@
   </head>
 
   <body>
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/"> <b> Aling Nena </b> </a>
-            <ul class="nav navbar-nav">
-              <li><a href="/about" onmouseover="this.style.background='00FFCC';" onmouseout="this.style.background='66CCCC';" >About</a></li>
-			  <li><a href="/purchase" onmouseover="this.style.background='00FFCC';" onmouseout="this.style.background='66CCCC';" >Buy a Product!</a></li>
-			  <li><a href="/products" onmouseover="this.style.background='00FFCC';" onmouseout="this.style.background='66CCCC';" >Products</a></li>
-              <li><a href="/admin" onmouseover="this.style.background='00FFCC';" onmouseout="this.style.background='66CCCC';" >FOR ALING NENA ONLY</a></li>
-
-      </div>
+          <a class="navbar-brand" href="/">Aling Nena</a>
         </div>
       </div>
     </div>
 
     <div class="container">
 
-      <div class="histo">
-        <h1> What do you want to buy?</h1>
+      <div class="admin">
+        <h1><%="Buy #{@product.name}" %></h1>
+        <!--form role="form" method="POST" action="<%= @product.new_record? ? '/create_product' : "/update_product/#{@product.id}" %>"-->
+	<form role="form" method="POST" action="<%= @product.new_record? ? '/purchase/:id' : "/products"%>">
+          <form class="form-horizontal" role="form">
+		<!--div class="form-group">
+              <label for="name" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" disabled placeholder="Enter name of product" value="<%= @product.new_record? ? '' : @product.name %>">
+              </div>
+            </div>
+	<div class="form-group">
+              <label for="price" class="col-sm-2 control-label">Price</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="price" disabled placeholder="Enter price of product" value="<%= @product.new_record? ? '' : @product.price %>"-->
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="sold" class="col-sm-2 control-label">How many do you want to buy?</label>
+              <div class="col-sm-10">
+                <!--input type="text" class="form-control" name="sold" placeholder="How many do you want to buy?" value="<%= @product.new_record? ? ' ' : @product.sold %>"-->
+		<input type="text" class="form-control" name="sold" placeholder="How many do you want to buy?" value="<%= @product.sold %>">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default btn-primary"> <%= "Buy #{@product.name}" %></button>
+                <a href="/products" class="btn btn-default">Back to Product List</a>
+              </div>
+            </div>
+          </form>
       </div>
 
     </div><!-- /.container -->

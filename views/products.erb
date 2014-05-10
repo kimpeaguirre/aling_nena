@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> Products </title>
+    <title>All Products : Aling Nena </title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -23,15 +23,15 @@
   </head>
 
   <body>
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="/"><b> Aling Nena </b></a>
-            <ul class="nav navbar-nav">
+		<ul class="nav navbar-nav">
               <li><a href="/about" onmouseover="this.style.background='00FFCC';" onmouseout="this.style.background='66CCCC';" >About</a></li>
-			  <li><a href="/purchase" onmouseover="this.style.background='00FFCC';" onmouseout="this.style.background='66CCCC';" >Buy a Product!</a></li>
-			  <li><a href="/products" onmouseover="this.style.background='00FFCC';" onmouseout="this.style.background='66CCCC';" >Products</a></li>
-              <li><a href="/admin" onmouseover="this.style.background='00FFCC';" onmouseout="this.style.background='66CCCC';" >FOR ALING NENA ONLY</a></li>
+		<li><a href="/products" onmouseover="this.style.background='00FFCC';" onmouseout="this.style.background='66CCCC';" >Products</a></li>
+		<li><a href="/admin" onmouseover="this.style.background='00FFCC';" onmouseout="this.style.background='66CCCC';" >FOR ALING NENA ONLY</a></li>
 
       </div>
         </div>
@@ -40,8 +40,30 @@
 
     <div class="container">
 
-      <div class="histo">
-        <h1> Products Available For Sale: </h1>
+      <div class="admin">
+        <h1>All Products</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td>ID</td>
+              <td>Name</td>
+              <td>Price</td>
+              <td>Quantity</td>
+              
+            </tr>
+          </thead>
+          <tbody>
+          <% @products.each do |product| %>
+            <tr>
+              <td><%= product.id %></td>
+              <td><a href="/purchase/<%= product.id %>"><%= product.name %></a></td>
+              <td><%= product.price %></td>
+              <td><%= product.quantity %></td>
+              
+            </tr>
+			<% end %>          
+			</tbody>          
+        </table>
       </div>
 
     </div><!-- /.container -->
