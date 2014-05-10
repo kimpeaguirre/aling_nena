@@ -1,0 +1,48 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<title>Bought!</title>
+
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link href='/css/customer.css' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+<center>
+<div id="container_large">
+    <h2>Item Bought!</h2>
+      <p><%="Bought #{nabenta} units of #{@product.name}. Your change is in the following denominations:"%></p>
+        <table>
+          <tbody>
+            <tr>
+              <td class = "change_num"><%= @change[:ones] %></td>
+              <td><%= @change[:fifties] %></td>
+            </tr>
+            <tr>
+              
+              <td class = "change_num"><%= @change[:fives] %></td>
+              
+              <td><%= @change[:hundreds] %></td>
+            </tr>
+            <tr>
+              
+              <td class = "change_num"><%= @change[:tens] %></td>
+              
+              <td><%= @change[:five_hundreds] %></td>
+            </tr>
+            <tr>
+              
+              <td class = "change_num"><%= @change[:twenties] %></td>
+              
+              <td><%= @change[:thousands] %></td>
+            </tr>
+          </tbody>
+        </table>
+    <div id="hr"></div>
+    <h1>PURCHASE ITEM <a href="/" id="home_x" title="HOME">&#10008;</a></h1>
+</div>
+</center>
+</body>

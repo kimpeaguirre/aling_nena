@@ -26,7 +26,6 @@ end
 
 post '/purchase/:id' do
 	@product = Item.find(params[:id])
-
 	#needtopay = @nabenta*@product.price.to_i
 	#@money = MoneyCalculator.new(params[:ones].to_i, params[:fives].to_i, params[:tens].to_i, params[:twenties].to_i, params[:fifties].to_i, params[:hundreds].to_i, params[:five_hundreds].to_i, params[:thousands].to_i)
 	@nabenta = params[:nabenta].to_i
@@ -38,6 +37,7 @@ post '/purchase/:id' do
       	)
 	#@change = @money.change(needtopay)
 	#@sukli = @money.changereal
+	#erb :bought
 	redirect to '/products'
 end
 
