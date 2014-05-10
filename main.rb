@@ -1,5 +1,6 @@
 require 'sinatra'
 require './boot.rb'
+require './money_calculator.rb'
 
 #EASY PEASY CODES
 
@@ -16,12 +17,6 @@ get '/products' do
 	erb :products
 end
 
-post '/products' do
-	erb :products
-	#products na updated
-end
-
-
 #CODES FOR BUYING
 
 get '/purchase/:id' do
@@ -31,15 +26,23 @@ end
 
 post '/purchase/:id' do
 	@product = Item.find(params[:id])
+
+	#needtopay = @nabenta*@product.price.to_i
+	#@money = MoneyCalculator.new(params[:ones].to_i, params[:fives].to_i, params[:tens].to_i, params[:twenties].to_i, params[:fifties].to_i, params[:hundreds].to_i, params[:five_hundreds].to_i, params[:thousands].to_i)
+	@nabenta = params[:nabenta].to_i
+	newquantity = @product.quantity - @nabenta
+	newsold = @product.sold + @nabenta
 	@product.update_attributes!(
-	sold: params[:sold]
-	#quantity= quantity - sold
-	)
+      	quantity: newquantity,
+      	sold: newsold,
+      	)
+	#@change = @money.change(needtopay)
+	#@sukli = @money.changereal
 	redirect to '/products'
 end
 
 # ROUTES FOR ADMIN SECTION
-get '/admin' do
+	get '/admin' do
 	@products = Item.all
 	erb :admin_index
 end
@@ -56,7 +59,7 @@ post '/create_product' do
 	@item.quantity = params[:quantity]
 	@item.sold = 0
 	@item.save
- 	redirect to '/admin'
+	redirect to '/admin'
 end
 
 get '/edit_product/:id' do
@@ -79,4 +82,3 @@ get '/delete_product/:id' do
 	@product.destroy!
 	redirect to '/admin'
 end
-
